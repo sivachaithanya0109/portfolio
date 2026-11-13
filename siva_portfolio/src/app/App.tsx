@@ -1,53 +1,28 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { Code2 } from 'lucide-react'
-import { Header } from '../components/SiteChrome'
-import { PortfolioSections } from '../pages/Pages'
+import { AnimatePresence, MotionConfig, useReducedMotion } from 'motion/react'
+import { PortfolioPreferencesProvider, usePortfolioPreferences } from './providers/PortfolioPreferences'
+import { TemplateRouter } from './router/TemplateRouter'
+import { LaunchLoader } from './LaunchLoader'
 
 export default function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => localStorage.getItem('siva-theme') === 'dark' ? 'dark' : 'light')
+  return <PortfolioPreferencesProvider><PortfolioApplication /></PortfolioPreferencesProvider>
+}
+
+function PortfolioApplication() {
   const [loading, setLoading] = useState(true)
-  const reduceMotion = useReducedMotion()
+  const reduced = useReducedMotion()
+  const { selectedTemplate, theme } = usePortfolioPreferences()
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    localStorage.setItem('siva-theme', theme)
-  }, [theme])
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 720)
+    if (!loading) return
+    const timer = window.setTimeout(() => setLoading(false), reduced ? 420 : 540)
     return () => window.clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    const nodes = document.querySelectorAll<HTMLElement>('.reveal')
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible')
-          observer.unobserve(entry.target)
-        }
-      })
-    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' })
-    nodes.forEach((node) => observer.observe(node))
-    return () => observer.disconnect()
   }, [loading])
 
-  return (
-    <>
-      <AnimatePresence>
-        {loading && <motion.div className="launch-screen" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : 0.3 }} aria-label="Loading portfolio">
-          <div className="loader-brand"><span>SC</span><Code2 size={17} /></div>
-          <div className="loader-track"><motion.span initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.62, ease: 'easeInOut' }} /></div>
-          <p>Building something thoughtful</p>
-        </motion.div>}
-      </AnimatePresence>
-      <div className="app-shell">
-        <Header theme={theme} onToggleTheme={() => setTheme((current) => current === 'light' ? 'dark' : 'light')} />
-        <main>
-          <PortfolioSections />
-        </main>
-      </div>
-    </>
-  )
+  return <MotionConfig reducedMotion="user">
+    <AnimatePresence>
+      {loading && <LaunchLoader template={selectedTemplate} theme={theme} />}
+    </AnimatePresence>
+    <TemplateRouter />
+  </MotionConfig>
 }
