@@ -1,0 +1,10 @@
+.dart_tool/
+siva_portfolio/node_modules/
+siva_portfolio/dist/
+siva_portfolio/coverage/
+siva_portfolio/playwright-report/
+siva_portfolio/test-results/
+siva_portfolio/preview-*.png
+siva_portfolio/.env
+siva_portfolio/.env.*
+!siva_portfolio/.env.example
