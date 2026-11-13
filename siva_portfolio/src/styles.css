@@ -94,6 +94,13 @@
 .contact-form input,.contact-form textarea{padding:9px 11px;font-size:10px;border-radius:7px;}
 .contact-form textarea{min-height:76px;}
 .contact-form .button{min-height:38px;}
+.about-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);padding-top:12px;}
+.about-facts>div{display:grid;grid-template-columns:22px 1fr;align-content:center;align-items:center;gap:2px 7px;padding:0 9px;border-right:1px solid var(--line);}
+.about-facts>div:first-child{padding-left:0;}
+.about-facts>div:last-child{border-right:0;}
+.about-facts svg{grid-row:span 2;color:#168c70;}
+.about-facts strong{font-size:9px;white-space:nowrap;}
+.about-facts small{font-size:8px;color:var(--muted);}
 .page-section{scroll-margin-top:0;}
 .content-page{justify-content:flex-start;}
 .page-section.hero{background:radial-gradient(ellipse at 72% 52%,rgba(211,234,255,.52),transparent 45%),var(--paper);}
