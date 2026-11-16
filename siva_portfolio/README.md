@@ -33,6 +33,8 @@ Before deploying, create a Cloudflare Pages project named `siva-portfolio` and a
 - `CLOUDFLARE_API_TOKEN` — a Cloudflare API token with permission to deploy Pages.
 - `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID.
 
+Do not commit these values or share the API token in chat. The workflow checks that both secrets are present before deployment.
+
 ## Templates
 
 Template registration, visual tokens, routing behavior, preference storage, and instructions for adding a template are documented in [docs/TEMPLATES.md](docs/TEMPLATES.md). See [docs/IMAGE-CREDITS.md](docs/IMAGE-CREDITS.md) for the mountain and automotive photograph sources.
