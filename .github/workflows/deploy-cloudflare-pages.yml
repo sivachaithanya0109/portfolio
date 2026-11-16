@@ -31,13 +31,32 @@ jobs:
         run: npm ci
         working-directory: siva_portfolio
 
-      - name: Run unit tests
-        run: npm test -- --run
+      - name: Run Vitest
+        run: npm run test:ci
+        working-directory: siva_portfolio
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chrome
+        working-directory: siva_portfolio
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
         working-directory: siva_portfolio
 
       - name: Build portfolio
         run: npm run build
         working-directory: siva_portfolio
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            siva_portfolio/playwright-report/
+            siva_portfolio/test-results/
+          if-no-files-found: ignore
+          retention-days: 14
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
