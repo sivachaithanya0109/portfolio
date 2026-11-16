@@ -24,16 +24,16 @@ Playwright tests live in `e2e/`. The suite covers shared portfolio content and l
 
 The application root is the existing `siva_portfolio/` folder in the repository. Its `src/`, `public/`, `e2e/`, `playwright.config.ts`, and `package.json` already follow the requested layout, so no folder moves are needed.
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare Workers
 
-The GitHub Actions workflow at `.github/workflows/deploy-cloudflare-pages.yml` runs unit and Playwright tests, builds the portfolio, then deploys `dist/` to the Cloudflare Pages project `siva-portfolio` when changes are pushed to `master`. It can also be started manually from the repository's Actions tab. The Playwright HTML report and test artifacts are uploaded even when a test fails.
+The GitHub Actions workflow at `.github/workflows/deploy-cloudflare-worker.yml` runs unit and Playwright tests, builds the portfolio, then deploys `dist/` as static assets to the Worker `portfolio-siva` when changes are pushed to `master`. It can also be started manually from the repository's Actions tab. The Playwright HTML report and test artifacts are uploaded even when a test fails.
 
-Before deploying, create a Cloudflare Pages project named `siva-portfolio` and add these repository Actions secrets under **Settings → Secrets and variables → Actions**:
+The Worker configuration is in `wrangler.jsonc`. Before deploying, add these repository Actions secrets under **Settings → Secrets and variables → Actions**:
 
-- `CLOUDFLARE_API_TOKEN` — a Cloudflare API token with permission to deploy Pages.
+- `CLOUDFLARE_API_TOKEN` — a Cloudflare API token with **Account → Workers Scripts → Edit** permission, scoped to the account that owns `portfolio-siva`.
 - `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID.
 
-Do not commit these values or share the API token in chat. The workflow checks that both secrets are present before deployment.
+Enable a `workers.dev` URL for the Worker or attach a custom domain to make the deployed portfolio reachable. Do not commit the secrets or share the API token in chat. The workflow checks that both secrets are present before deployment.
 
 ## Templates
 
