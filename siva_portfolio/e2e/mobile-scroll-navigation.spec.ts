@@ -15,6 +15,7 @@ test('mobile navigation follows the section reached by scrolling', async ({ page
     const marker = window.innerHeight * .36
     return Boolean(bounds && bounds.top <= marker && bounds.bottom > marker)
   })
+  await expect(page.locator('.section-navigation a[href="/about"]')).toHaveAttribute('aria-current', 'page')
   await page.getByRole('button', { name: /open navigation/i }).click()
-  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'About' })).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'About' })).toBeVisible()
 })

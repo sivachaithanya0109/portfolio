@@ -26,19 +26,7 @@ export function TemplateFrame({ children, className, ...props }: LayoutProps & {
     document.addEventListener('scroll', syncFromScroll, { passive: true, capture: true })
     window.addEventListener('resize', syncFromScroll)
     const firstSync = window.requestAnimationFrame(syncFromScroll)
-    if (!('IntersectionObserver' in window)) return () => {
-      window.cancelAnimationFrame(firstSync)
-      window.removeEventListener('scroll', syncFromScroll)
-      document.removeEventListener('scroll', syncFromScroll, true)
-      window.removeEventListener('resize', syncFromScroll)
-    }
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-      if (visible) setScrollPage(visible.target.id as PageId)
-    }, { rootMargin: '-28% 0px -58% 0px', threshold: [0, .1, .25, .5] })
-    sections.forEach((section) => observer.observe(section))
     return () => {
-      observer.disconnect()
       window.cancelAnimationFrame(firstSync)
       window.removeEventListener('scroll', syncFromScroll)
       document.removeEventListener('scroll', syncFromScroll, true)

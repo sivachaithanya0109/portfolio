@@ -19,6 +19,10 @@ npm run test:e2e
 
 There is no separate lint command configured in this repository. The production build runs TypeScript project checks before Vite bundles the application.
 
+Playwright tests live in `e2e/`. The suite covers shared portfolio content and local images, responsive section navigation, resume and project links, contact-form validation, template and theme behavior, and mobile navigation. HTML reports are written to `playwright-report/`; failure artifacts are written to `test-results/`. Both output folders are ignored by Git.
+
+The application root is the existing `siva_portfolio/` folder in the repository. Its `src/`, `public/`, `e2e/`, `playwright.config.ts`, and `package.json` already follow the requested layout, so no folder moves are needed.
+
 ## Templates
 
 Template registration, visual tokens, routing behavior, preference storage, and instructions for adding a template are documented in [docs/TEMPLATES.md](docs/TEMPLATES.md). See [docs/IMAGE-CREDITS.md](docs/IMAGE-CREDITS.md) for the mountain and automotive photograph sources.
