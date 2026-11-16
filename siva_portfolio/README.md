@@ -23,6 +23,15 @@ Playwright tests live in `e2e/`. The suite covers shared portfolio content and l
 
 The application root is the existing `siva_portfolio/` folder in the repository. Its `src/`, `public/`, `e2e/`, `playwright.config.ts`, and `package.json` already follow the requested layout, so no folder moves are needed.
 
+## Deploy to Cloudflare Pages
+
+The GitHub Actions workflow at `.github/workflows/deploy-cloudflare-pages.yml` runs the unit tests and production build, then deploys `dist/` to the Cloudflare Pages project `siva-portfolio` when changes are pushed to `master`. It can also be started manually from the repository's Actions tab.
+
+Before deploying, create a Cloudflare Pages project named `siva-portfolio` and add these repository Actions secrets under **Settings → Secrets and variables → Actions**:
+
+- `CLOUDFLARE_API_TOKEN` — a Cloudflare API token with permission to deploy Pages.
+- `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID.
+
 ## Templates
 
 Template registration, visual tokens, routing behavior, preference storage, and instructions for adding a template are documented in [docs/TEMPLATES.md](docs/TEMPLATES.md). See [docs/IMAGE-CREDITS.md](docs/IMAGE-CREDITS.md) for the mountain and automotive photograph sources.
