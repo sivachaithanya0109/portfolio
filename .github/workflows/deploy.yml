@@ -17,48 +17,63 @@ permissions:
 
 jobs:
   build-test-deploy:
+    name: Test and Deploy Portfolio
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./siva_portfolio
+
     steps:
+      # 1. Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: siva_portfolio/package-lock.json
 
+      # 3. Install dependencies
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Unit Tests
+      # 4. Run unit tests
+      - name: Run Vitest
         run: npm run test:ci
 
+      # 5. Install Playwright browsers
       - name: Install Playwright
         run: npx playwright install --with-deps chromium
 
+      # 6. Run E2E tests
       - name: Run Playwright Tests
         run: npm run test:e2e
 
-      - name: Build Application
+      # 7. Build application
+      - name: Build Portfolio
         run: npm run build
 
+      # 8. Upload test reports
       - name: Upload Playwright Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-html-report
           path: |
-            playwright-report/
-            test-results/
+            siva_portfolio/playwright-report/
+            siva_portfolio/test-results/
           if-no-files-found: ignore
           retention-days: 14
 
+      # 9. Deploy to Cloudflare
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=siva-portfolio --branch=master
+          command: pages deploy siva_portfolio/dist --project-name=siva-portfolio --branch=master
