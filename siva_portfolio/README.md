@@ -14,6 +14,7 @@ npm run dev
 ```sh
 npm run build
 npm test -- --run
+npm run test:ci
 npm run test:e2e
 ```
 
@@ -25,7 +26,7 @@ The application root is the existing `siva_portfolio/` folder in the repository.
 
 ## Deploy to Cloudflare Pages
 
-The GitHub Actions workflow at `.github/workflows/deploy-cloudflare-pages.yml` runs the unit tests and production build, then deploys `dist/` to the Cloudflare Pages project `siva-portfolio` when changes are pushed to `master`. It can also be started manually from the repository's Actions tab.
+The GitHub Actions workflow at `.github/workflows/deploy-cloudflare-pages.yml` runs unit and Playwright tests, builds the portfolio, then deploys `dist/` to the Cloudflare Pages project `siva-portfolio` when changes are pushed to `master`. It can also be started manually from the repository's Actions tab. The Playwright HTML report and test artifacts are uploaded even when a test fails.
 
 Before deploying, create a Cloudflare Pages project named `siva-portfolio` and add these repository Actions secrets under **Settings → Secrets and variables → Actions**:
 
