@@ -1,4 +1,5 @@
 import { useRef, type PointerEvent as ReactPointerEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
 import { ArrowDown, ArrowDownToLine, ArrowRight, ArrowUpRight, BriefcaseBusiness, Code2, Compass, GraduationCap, Sparkles } from 'lucide-react'
 import { TemplateFrame } from '../../components/shared/TemplateFrame'
@@ -34,7 +35,7 @@ export function AnimatedLayout(props: LayoutProps) {
     <main className="animated-sections">
       <section className="animated-section animated-hero" id="home" ref={heroRef}>
         <div className="animated-diagonal" aria-hidden="true" />
-        <div className="animated-hero-copy"><span className="animated-eyebrow"><Sparkles size={14} /> HELLO, I'M SIVA</span><h1>Building thoughtful<br /><em>digital experiences.</em></h1><h2>{profile.title}</h2><p>{profile.heroSummary}</p><div className="animated-actions"><a className="animated-button" href="/projects">Explore projects <ArrowRight size={16} /></a><a className="animated-text-link" href={profile.resumePath} download>Resume <ArrowDownToLine size={15} /></a></div><SocialLinks className="animated-socials" /></div>
+        <div className="animated-hero-copy"><span className="animated-eyebrow"><Sparkles size={14} /> HELLO, I'M SIVA</span><h1>Building thoughtful<br /><em>digital experiences.</em></h1><h2>{profile.title}</h2><p>{profile.heroSummary}</p><div className="animated-actions"><Link className="animated-button" to="/projects">Explore projects <ArrowRight size={16} /></Link><a className="animated-text-link" href={profile.resumePath} download>Resume <ArrowDownToLine size={15} /></a></div><SocialLinks className="animated-socials" /></div>
         <motion.div className="animated-character-wrap" onPointerEnter={() => { if (!reduced) pointerY.set(-3) }} onPointerMove={trackPointer} onPointerLeave={resetPointer} style={{ y: portraitY, rotate: portraitRotate, rotateX: lookY, rotateY: lookX }}><img className="animated-character" src={profile.animatedPortraitPath} alt={`Illustrated portrait of ${profile.fullName}`} /><span className="thought-bubble bubble-one">IDEAS</span><span className="thought-bubble bubble-two"><Code2 size={17} /></span></motion.div>
         <span className="animated-hero-caption">SOFTWARE · PRODUCT · QUALITY</span><a className="animated-scroll-cue" href="#about" aria-label="Scroll to about"><ArrowDown size={16} /></a>
       </section>

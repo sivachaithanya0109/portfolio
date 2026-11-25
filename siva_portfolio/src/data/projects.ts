@@ -8,7 +8,7 @@ export const projects = [
     summary: 'A responsive portfolio to bring technical skills, selected projects and professional experience together in one clear web experience.',
     technologies: ['React', 'JavaScript', 'HTML', 'CSS', 'Node.js'],
     visual: 'portfolio',
-    githubUrl: 'https://github.com/search?q=Gurram+Siva+Chaithanya+portfolio&type=repositories',
+    githubUrl: 'https://github.com/sivachaithanya0109/portfolio-chaithanya',
   },
   {
     id: 'analytics-dashboards',
