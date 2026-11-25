@@ -78,3 +78,54 @@
 /* Keep the Animated Professional dark story panel legible and increase its reading sizes. */
 .animated-about{color:#f5fffc}.animated-copy h2{color:#f5fffc}.animated-copy>p,.animated-copy blockquote{color:#d5e6e1;font-size:13px;line-height:1.9}.animated-copy .animated-label{color:#72e4cc}.animated-hero-copy>p,.animated-section-heading>p,.animated-contact-copy>p{font-size:13px;line-height:1.9}.animated-skill-card p,.animated-project-copy p,.animated-timeline article p,.animated-education span{font-size:11px;line-height:1.8}.animated-project-copy>small,.animated-project-copy>div span,.animated-timeline article>div>div span{font-size:8px}
 @media(max-width:650px){.template-frame{padding:0}.template-header{margin:0}.portfolio-footer{border-radius:0}.animated-copy>p,.animated-copy blockquote{font-size:12px}.animated-hero-copy>p,.animated-section-heading>p,.animated-contact-copy>p{font-size:12px}.animated-skill-card p,.animated-project-copy p,.animated-timeline article p,.animated-education span{font-size:10px}}
+
+/* Shared reading sizes keep the portfolio content comfortable across every template. */
+:is(.template-frame,.app-shell) :is(.pastel-sections,.motion-sections,.auto-sections,.mountain-sections,.animated-sections,.portfolio-sections) p{font-size:13px;line-height:1.75}
+:is(.template-frame,.app-shell) :is(.pastel-sections,.motion-sections,.auto-sections,.mountain-sections,.animated-sections,.portfolio-sections) li{font-size:14px;line-height:1.7}
+:is(.template-frame,.app-shell) :is(.pastel-sections,.motion-sections,.auto-sections,.mountain-sections,.animated-sections,.portfolio-sections) small{font-size:11px}
+:is(.template-frame,.app-shell) :is(.pastel-tag,.mc-number,.auto-section-kicker,.mountain-section-heading>span,.animated-label,.animated-eyebrow,.section-label,.overline){font-size:11px}
+:is(.template-frame,.app-shell) :is(.pastel-project-tags,.pastel-skill-grid,.mc-project-copy,.mc-domain,.auto-skill-list,.auto-dest-info,.mountain-destination-copy,.animated-skill-card,.animated-project-copy,.skill-card,.project-info) :is(span,small){font-size:12px}
+:is(.template-frame,.app-shell) :is(.pastel-skill-card strong,.pastel-project-body h3,.mc-domain h3,.mc-project-copy h3,.auto-dash-card h3,.auto-dest-info h3,.mountain-destination-copy h3,.animated-skill-card h3,.animated-project-copy h3,.skill-card h3,.project-info h3){font-size:clamp(16px,1.15vw,18px)}
+:is(.template-frame,.app-shell) :is(.pastel-home-copy h1,.mc-hero h1,.auto-hero h1,.mountain-hero h1,.animated-hero h1){font-size:clamp(42px,5.8vw,77px);line-height:1.08}
+:is(.template-frame,.app-shell) :is(.pastel-home-copy h2,.mc-hero-copy p,.auto-hero-copy h2,.mountain-hero h2,.animated-hero h2){font-size:clamp(18px,1.7vw,24px)}
+:is(.template-frame,.app-shell) main section:not(:is(.hero,.pastel-home,.mc-hero,.auto-hero,.mountain-hero,.animated-hero)) h2{font-size:clamp(32px,4.2vw,57px);line-height:1.08}
+:is(.template-frame,.app-shell) :is(.pastel-section-title h2,.mc-section-heading h2,.auto-section-heading h2,.mountain-section-heading h2,.animated-section-heading h2,.section-heading h2){font-size:clamp(34px,4.3vw,59px);line-height:1.08}
+:is(.template-frame,.app-shell) :is(.pastel-project-body p,.mc-project-copy p,.auto-dest-info p,.mountain-destination-copy p,.animated-project-copy p,.project-info>p,.skill-card .skill-tags span,.animated-skill-card p){font-size:13px;line-height:1.7}
+:is(.template-frame,.app-shell) :is(.skill-tags span,.project-tags span,.project-type,.timeline-date,.focus-item strong,.extra-card strong,.pastel-skill-card small,.pastel-project-tags small,.mc-project-copy>div span,.mc-domain p,.auto-skill-list span,.auto-dest-info>div span,.mountain-destination-copy>div span,.animated-project-copy>div span,.animated-timeline article>div>div span){font-size:12px;line-height:1.5}
+:is(.template-frame,.app-shell) :is(.timeline-content h3,.education-card h4,.experience-aside h3,.focus-list h3,.pastel-stats strong,.pastel-timeline h3,.pastel-education strong,.auto-route-card h3,.mountain-timeline h3,.animated-timeline h3){font-size:clamp(16px,1.2vw,19px)}
+@media(max-width:650px){
+  :is(.template-frame,.app-shell) :is(.pastel-sections,.motion-sections,.auto-sections,.mountain-sections,.animated-sections,.portfolio-sections) p{font-size:13px}
+  :is(.template-frame,.app-shell) :is(.pastel-section-title h2,.mc-section-heading h2,.auto-section-heading h2,.mountain-section-heading h2,.animated-section-heading h2,.section-heading h2){font-size:clamp(30px,8.5vw,42px)}
+  :is(.template-frame,.app-shell) :is(.pastel-home-copy h1,.mc-hero h1,.auto-hero h1,.mountain-hero h1,.animated-hero h1){font-size:clamp(36px,9.5vw,54px)}
+}
+
+/* Keep project and resume actions visibly boxed in every template and viewport. */
+:is(.template-frame,.app-shell) :is(.project-source-link,.pastel-project-body>a,.auto-dest-info>a,.mountain-destination-copy>a,.animated-project-copy>a,.mc-project-copy>a){display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;width:max-content;max-width:100%;margin-top:11px;padding:8px 12px;border:1px solid currentColor;border-radius:8px;background:color-mix(in srgb,currentColor 9%,transparent);font-size:13px;font-weight:700;line-height:1.25;text-decoration:none}
+:is(.template-frame,.app-shell) :is(.pastel-resume .pastel-secondary,.mc-resume-actions>a:not(.mc-button),.auto-resume-actions>a:not(.auto-button),.mountain-resume-actions>a:not(.mountain-button),.animated-resume .animated-text-link){display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 13px;border:1px solid currentColor;border-radius:8px;background:color-mix(in srgb,currentColor 8%,transparent);font-size:13px;font-weight:700;line-height:1.25;text-decoration:none}
+:is(.template-frame,.app-shell) :is(.pastel-resume .pastel-actions,.mc-resume-actions,.auto-resume-actions,.mountain-resume-actions,.animated-resume .animated-actions,.resume-actions){display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+:is(.template-frame,.app-shell) :is(.project-source-link,.pastel-project-body>a,.auto-dest-info>a,.mountain-destination-copy>a,.animated-project-copy>a,.mc-project-copy>a,.pastel-resume .pastel-secondary,.mc-resume-actions>a:not(.mc-button),.auto-resume-actions>a:not(.auto-button),.mountain-resume-actions>a:not(.mountain-button),.animated-resume .animated-text-link):focus-visible{outline:3px solid color-mix(in srgb,var(--template-accent,currentColor) 45%,transparent);outline-offset:3px}
+
+/* Midnight mobile cards need room for longer skill and education labels. */
+@media(max-width:700px){
+  .app-shell .skills-grid{grid-template-columns:minmax(0,1fr);gap:10px;margin-top:28px}
+  .app-shell .skills-grid .skill-card{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:12px;min-height:0;padding:14px 16px}
+  .app-shell .skills-grid .skill-card-heading{position:static;min-width:0}
+  .app-shell .skills-grid .skill-card h3{font-size:16px;line-height:1.3;overflow-wrap:anywhere}
+  .app-shell .skills-grid .skill-card p{margin:4px 0 0;font-size:13px;line-height:1.45}
+  .app-shell .education-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+  .app-shell .education-card{grid-template-columns:minmax(68px,.28fr) minmax(0,1fr);align-items:start;gap:5px 12px;padding:12px}
+  .app-shell .education-card .education-years{grid-column:1;grid-row:1 / span 4;overflow-wrap:anywhere}
+  .app-shell .education-card h4,.app-shell .education-card p,.app-shell .education-card>span:not(.education-years),.app-shell .education-card strong{grid-column:2;min-width:0;overflow-wrap:anywhere}
+  .app-shell .education-card h4{grid-row:auto;margin:0;font-size:14px;line-height:1.4}
+  .app-shell .education-card p,.app-shell .education-card>span:not(.education-years){grid-row:auto;font-size:12px;line-height:1.45}
+  .app-shell .education-card strong{grid-row:auto;align-self:auto;margin-top:2px;font-size:12px}
+}
+
+@media(max-width:650px){
+  .template-frame .pastel-skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .template-frame .pastel-skill-grid .pastel-skill-card{min-width:0;min-height:88px;align-items:flex-start;gap:9px;padding:10px}
+  .template-frame .pastel-skill-grid .pastel-skill-card>span{flex:none;margin-top:1px}
+  .template-frame .pastel-skill-grid .pastel-skill-card div{min-width:0;gap:4px}
+  .template-frame .pastel-skill-grid .pastel-skill-card strong{font-size:13px;line-height:1.3;overflow-wrap:anywhere}
+  .template-frame .pastel-skill-grid .pastel-skill-card small{font-size:11px;line-height:1.35;overflow-wrap:anywhere}
+}

@@ -1,4 +1,5 @@
 import { ArrowDownToLine, ArrowRight, ArrowUpRight, BriefcaseBusiness, Code2, GraduationCap, Languages, Mail, MapPin, Phone, Sparkles } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { TemplateFrame } from '../../components/shared/TemplateFrame'
 import { ContactForm } from '../../components/shared/ContactForm'
 import { SocialLinks } from '../../components/SiteChrome'
@@ -14,7 +15,7 @@ export function PastelLayout(props: LayoutProps) {
   return <TemplateFrame {...props} className="pastel-template">
     <main className="pastel-sections">
       <section className="pastel-section pastel-home" id="home">
-        <div className="pastel-home-copy"><span className="pastel-tag blue">👋 Hello, I’m</span><h1>{profile.fullName}</h1><h2>{profile.title}</h2><p>{profile.heroSummary}</p><div className="pastel-actions"><a className="pastel-primary" href="/projects">View Projects <ArrowRight size={16} /></a><a className="pastel-secondary" href={profile.resumePath} download>Download Resume <ArrowDownToLine size={16} /></a></div><SocialLinks /></div>
+        <div className="pastel-home-copy"><span className="pastel-tag blue">👋 Hello, I’m</span><h1>{profile.fullName}</h1><h2>{profile.title}</h2><p>{profile.heroSummary}</p><div className="pastel-actions"><Link className="pastel-primary" to="/projects">View Projects <ArrowRight size={16} /></Link><a className="pastel-secondary" href={profile.resumePath} download>Download Resume <ArrowDownToLine size={16} /></a></div><SocialLinks /></div>
         <div className="pastel-portrait"><div className="pastel-orbit" /><img src={profile.portraitPath} alt={`Portrait of ${profile.fullName}`} /><span className="pastel-float-code"><Code2 size={19} /> Frontend</span><span className="pastel-float-quality">✓ Quality</span></div>
       </section>
       <section className="pastel-section pastel-about" id="about">
